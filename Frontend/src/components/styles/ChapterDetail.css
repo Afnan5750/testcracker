@@ -1,0 +1,67 @@
+/* src/styles/ChapterDetail.css */
+.chapter-detail {
+  padding: 20px;
+  margin-top: 6rem;
+}
+
+.chapter-detail h1 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.chapter-detail p {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.chapter-detail ul {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+  gap: 10px; /* Space between items */
+}
+
+.chapter-detail li {
+  box-sizing: border-box; /* Ensures padding does not affect width */
+}
+
+.chapter-link {
+  display: block; /* Make the link block-level */
+  text-decoration: none;
+  color: #333; /* Dark text color for contrast */
+  background-color: #f0f0f0; /* Light background color */
+  padding: 15px 30px; /* Increased padding for larger width */
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.chapter-link:hover {
+  background-color: #e0e0e0; /* Slightly darker light color on hover */
+  color: #333; /* Darker text color on hover */
+}
+
+/* Dark Theme Styles */
+.dark-mode .chapter-detail {
+  color: #e0e0e0; /* Light text color for contrast */
+}
+
+.dark-mode .chapter-detail h1 {
+  color: #e0e0e0; /* Light text color for headings */
+}
+
+.dark-mode .chapter-detail p {
+  color: #e0e0e0; /* Light text color for paragraphs */
+}
+
+.dark-mode .chapter-link {
+  color: #e0e0e0; /* Light text color for links */
+  background-color: #1d3b53; /* Dark background color for links */
+}
+
+.dark-mode .chapter-link:hover {
+  background-color: #15324b; /* Slightly lighter dark color on hover */
+  color: #e0e0e0; /* Light text color on hover */
+}

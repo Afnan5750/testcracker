@@ -1,0 +1,89 @@
+/* Latest Jobs Section */
+.latest-jobs {
+  padding: 30px 50px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative; /* Ensure the overlay is positioned correctly */
+  overflow: hidden; /* Hide overflow to keep the slider clean */
+}
+
+.latest-jobs h2 {
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #333; /* Updated dark text color for headings */
+}
+
+.job-slider {
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap; /* Prevent line breaks in slider */
+}
+
+.job-list {
+  display: flex;
+  width: 200%; /* Adjust based on the number of items */
+  animation: slide 20s linear infinite;
+}
+
+.job-list:hover {
+  animation-play-state: paused; /* Pause animation on hover */
+}
+
+.job-item {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap; /* Prevent text from wrapping */
+  padding: 10px 20px;
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #010016; /* Updated primary text color */
+  background-color: #fff; /* Background color */
+  border-radius: 50px;
+  border: 2px solid #010016; /* Updated border color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Hover effect */
+.job-item:hover {
+  background-color: #1d3b53; /* Background color on hover */
+  color: #fff; /* Text color on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Animation for the slider */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+/* Dark mode styles */
+.dark-mode .latest-jobs {
+  background-color: #010016; /* Dark background color */
+  color: #f0f0f0; /* Light text color */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .latest-jobs h2 {
+  color: #f0f0f0; /* Light text color for headings */
+  margin-bottom: 30px;
+}
+
+.dark-mode .job-item {
+  color: #f0f0f0; /* Light text color */
+  background-color: #1d3b53; /* Dark background color */
+  border: 2px solid #f0f0f0; /* Light border color */
+}
+
+.dark-mode .job-item:hover {
+  background-color: #15324b; /* Darker background on hover */
+  color: #f0f0f0; /* Light text color on hover */
+}

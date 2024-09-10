@@ -1,0 +1,167 @@
+/* Light Theme Styles */
+.signin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f7f7f7; /* Light background for the container */
+}
+
+.signin-box {
+  background-color: #ffffff; /* White background for the box */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  padding: 30px;
+  max-width: 450px;
+  width: 100%;
+  margin-bottom: 6rem;
+  text-align: center;
+  margin-top: 7rem;
+}
+
+h2 {
+  font-size: 22px; /* Adjusted font size */
+  margin-bottom: 15px;
+  color: #333; /* Dark text color */
+}
+
+p {
+  font-size: 14px; /* Adjusted font size */
+  color: #666; /* Medium gray */
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.forgot-password {
+  font-size: 12px;
+  color: #3d74fa;
+  display: block;
+  margin-top: 5px;
+}
+
+.signin-button {
+  background-color: #3d74fa;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signin-button:hover {
+  background-color: #3361d6;
+}
+
+.create-account {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.create-account a {
+  color: #3d74fa;
+  text-decoration: none;
+}
+
+.create-account a:hover {
+  text-decoration: underline;
+}
+
+/* Dark Theme Styles */
+.dark-mode .signin-container {
+  background-color: #010016; /* Dark background for the container */
+}
+
+.dark-mode .signin-box {
+  background-color: #15324b; /* Dark background for the box */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2); /* Lighter shadow for dark mode */
+  padding: 30px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  margin-top: 7rem;
+}
+
+.dark-mode h2 {
+  margin-bottom: 15px;
+  color: #e0e0e0; /* Light text color */
+}
+
+.dark-mode p {
+  font-size: 14px;
+  color: #b0b0b0; /* Lighter gray */
+  margin-bottom: 20px;
+}
+
+.dark-mode .input-group label {
+  font-size: 14px;
+  color: #ccc; /* Light text color */
+}
+
+.dark-mode .input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc; /* Darker border for dark mode */
+  border-radius: 4px;
+  background-color: #15324b; /* Dark background for input */
+  color: #e0e0e0; /* Light text color */
+  outline: none;
+}
+
+.dark-mode .forgot-password {
+  font-size: 12px;
+  color: #4a90e2; /* Lighter blue for dark mode */
+  display: block;
+  margin-top: 5px;
+}
+
+.dark-mode .signin-button {
+  background-color: #4a90e2; /* Lighter blue for dark mode */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.dark-mode .signin-button:hover {
+  background-color: #357abd; /* Slightly darker blue on hover */
+}
+
+.dark-mode .create-account {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.dark-mode .create-account a {
+  color: #4a90e2; /* Lighter blue for dark mode */
+  text-decoration: none;
+}
+
+.dark-mode .create-account a:hover {
+  text-decoration: underline;
+}

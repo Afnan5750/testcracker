@@ -1,0 +1,201 @@
+.filter-section {
+  padding: 20px;
+  position: relative;
+  margin-top: 30px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the search box to the right */
+  margin-bottom: 50px;
+  position: relative; /* Needed for absolute positioning of suggestions box */
+}
+
+.search-heading {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.search-input {
+  width: 300px; /* Ensure the search input has a set width */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.suggestions-box {
+  position: absolute; /* Position it relative to the header container */
+  top: 100%; /* Position below the search input */
+  right: 0; /* Align it to the right edge of the header container */
+  width: 300px; /* Match width of search input */
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 100; /* Ensure it appears above other elements */
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+
+.no-suggestions {
+  padding: 10px;
+  text-align: center;
+  color: #999;
+}
+
+.quiz-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Align items to the start */
+  gap: 20px; /* Adjust gap as needed */
+}
+
+.quiz-box {
+  width: 300px; /* Adjusted width */
+  padding: 20px; /* Padding inside the box */
+  background-color: #ffffff;
+  border-radius: 15px; /* Increased border-radius for a softer look */
+  text-align: left; /* Align text to the left */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Prevent overflow */
+  transition: box-shadow 0.3s;
+}
+
+.quiz-box:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow on hover */
+}
+
+.quiz-box img {
+  width: 100%; /* Ensure image fills the container width */
+  height: 200px;
+  object-fit: contain; /* Contain within the box */
+  margin-bottom: 20px;
+}
+
+.quiz-box p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.quiz-box .subtitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.quiz-box .details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.quiz-box .details span {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #555;
+}
+
+.details span {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.start-quiz-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.start-quiz-btn:hover {
+  background-color: #218838;
+}
+
+.totalMCQs {
+  margin-right: 9px;
+}
+/* Dark Theme Styles */
+
+.dark-mode .filter-section {
+  background-color: #010016;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+/* Search input styling for dark theme */
+.dark-mode .search-input {
+  background-color: #15324b; /* Darker background for input */
+  border: 1px solid #666666; /* Darker border */
+  outline: none;
+  color: #fff; /* Light text color */
+}
+
+/* Suggestions dropdown box for dark theme */
+.dark-mode .suggestions-box {
+  background-color: #333333; /* Dark background for dropdown */
+  border: 1px solid #666666; /* Dark border */
+}
+
+/* Suggestion item styling for dark theme */
+.dark-mode .suggestion-item {
+  color: #e0e0e0; /* Light text */
+}
+
+.dark-mode .suggestion-item:hover {
+  background-color: #555555; /* Slightly darker background on hover */
+}
+
+/* No suggestions text for dark theme */
+.dark-mode .no-suggestions {
+  color: #bbbbbb; /* Lighter gray text for better readability */
+}
+
+.dark-mode .quiz-box {
+  background-color: #15324b;
+}
+
+.dark-mode .quiz-box:hover {
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.2); /* Slightly stronger shadow on hover */
+}
+
+.dark-mode .quiz-box p {
+  color: #f0f0f0;
+}
+
+.dark-mode .quiz-box .quiz-title {
+  font-size: 18px;
+  margin-bottom: 0;
+}
+
+.dark-mode .quiz-box .subtitle {
+  color: #aaa;
+}
+
+.dark-mode .quiz-box .details span {
+  color: #ddd;
+}
+.dark-mode .header-container {
+  margin-bottom: 50px;
+}

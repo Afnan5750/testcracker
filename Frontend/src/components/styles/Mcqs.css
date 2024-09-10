@@ -1,0 +1,164 @@
+/* src/styles/Mcqs.css */
+.mcqs {
+  padding: 20px;
+  margin-top: 6rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.mcqs h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: left;
+}
+
+.question-status-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns the status to the right */
+  width: 100%;
+  margin-bottom: 10px; /* Space between status and question */
+}
+
+.question-status {
+  font-size: 1rem;
+  color: #333; /* Adjust color as needed */
+}
+
+.mcqs ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.mcq-item {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.options-list {
+  padding-left: 20px;
+}
+
+.options-list li {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 1px solid #ccc;
+}
+
+.options-list li.correct-answer {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.options-list li:hover {
+  background-color: #e9ecef;
+}
+
+/* Container for buttons to align them in a row */
+.button-container {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-top: 10px;
+}
+
+.reveal-answer-btn,
+.next-question-btn,
+.back-question-btn {
+  padding: 10px 20px;
+  background-color: #1d3b53;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reveal-answer-btn:hover,
+.next-question-btn:hover,
+.back-question-btn:hover {
+  background-color: #15324b;
+}
+
+.reveal-answer-btn:focus,
+.next-question-btn:focus {
+  outline: none;
+}
+
+.answer {
+  font-size: 16px;
+  color: #333;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Dark Theme Styles */
+.dark-mode .mcqs {
+  background-color: #010016; /* Dark background color */
+  border-radius: 8px;
+}
+
+.dark-mode .mcqs h1 {
+  color: #e0e0e0; /* Light text color for headings */
+}
+
+.dark-mode .mcqs .mcq-item {
+  background: rgba(255, 255, 255, 0.1); /* Dark background color for items */
+  color: #e0e0e0; /* Light text color */
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Light shadow for dark mode */
+}
+
+.dark-mode .mcqs .question {
+  color: #e0e0e0; /* Light text color for questions */
+}
+
+.dark-mode .question-status {
+  color: #e0e0e0;
+}
+
+.dark-mode .mcqs .options-list li {
+  color: #e0e0e0; /* Light text color for options */
+  background-color: transparent; /* No background color */
+  border: 1px solid #333; /* Light gray border */
+  padding: 10px; /* Optional: Adds padding for better spacing */
+  border-radius: 4px; /* Optional: Slight rounding of the corners */
+}
+
+.dark-mode .mcqs .options-list li.correct-answer {
+  background-color: #1e7e34; /* Dark green for correct answers */
+  color: #c3e6cb; /* Light text color for correct answers */
+}
+
+.dark-mode .mcqs .options-list li:hover {
+  background-color: #444; /* Slightly lighter dark color on hover */
+}
+
+.dark-mode .mcqs .reveal-answer-btn,
+.dark-mode .mcqs .next-question-btn,
+.dark-mode .mcqs .back-question-btn {
+  background-color: #15324b; /* Keep the button blue */
+  color: #fff; /* White text color */
+}
+
+.dark-mode .mcqs .reveal-answer-btn:hover,
+.dark-mode .mcqs .next-question-btn:hover,
+.dark-mode .mcqs .back-question-btn:hover {
+  background-color: #1d3b53; /* Darker blue on hover */
+}
+
+.dark-mode .mcqs .answer {
+  color: #e0e0e0; /* Light text color for answers */
+}
