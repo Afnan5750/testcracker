@@ -4,6 +4,7 @@
   margin: 0 auto;
   padding: 40px;
   margin-top: 7rem;
+  margin-bottom: 5rem;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -19,6 +20,19 @@
   font-size: 28px;
   color: #333;
   margin-bottom: 10px;
+}
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.avatar-image {
+  width: 100px; /* Adjust size as needed */
+  height: 100px; /* Adjust size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the area */
+  border: 2px solid #ccc; /* Optional: add a border around the avatar */
 }
 
 .profile-header p {
@@ -58,19 +72,12 @@
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Input focus styling */
-.form-group input:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(38, 143, 255, 0.2);
-}
-
 /* Button styling */
 .submit-btn {
   padding: 12px 20px;
   border: none;
   border-radius: 8px;
-  background-color: #007bff;
+  background-color: #1d3b53;
   color: #ffffff;
   font-size: 16px;
   font-weight: 600;
@@ -81,14 +88,67 @@
 /* Button hover and focus styling */
 .submit-btn:hover,
 .submit-btn:focus {
-  background-color: #0056b3;
+  background-color: #15324b;
   outline: none;
-  transform: translateY(-1px);
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
-  .profile-container {
-    padding: 20px;
-  }
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  width: 100%;
+  padding-right: 40px; /* Leave space for the icon */
+}
+
+.toggle-password-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+/* Overall container styling for dark mode */
+.dark-mode .profile-container {
+  background-color: #15324b; /* Dark background for the container */
+  color: #ffffff; /* Light text color */
+}
+
+.dark-mode .form-group label {
+  color: #fff;
+}
+
+/* Header styling for dark mode */
+.dark-mode .profile-header h2 {
+  color: #ffffff; /* Light color for header text */
+}
+
+.dark-mode .profile-header p {
+  color: #cccccc; /* Lighter color for subtitle text */
+}
+
+/* Input field styling for dark mode */
+.dark-mode .form-group input {
+  border: 1px solid #ccc; /* Darker border for input fields */
+  background-color: #15324b;
+  color: #fff;
+}
+
+/* Input focus styling for dark mode */
+.dark-mode .form-group input:focus {
+  border-color: #66aaff; /* Light blue border on focus */
+  box-shadow: 0 0 0 2px rgba(102, 170, 255, 0.2); /* Light blue shadow on focus */
+}
+
+/* Button styling for dark mode */
+.dark-mode .submit-btn {
+  background-color: #0066cc; /* Darker blue background for button */
+  color: #ffffff; /* Light text color for button */
+}
+
+/* Button hover and focus styling for dark mode */
+.dark-mode .submit-btn:hover,
+.dark-mode .submit-btn:focus {
+  background-color: #004d99; /* Even darker blue background on hover/focus */
 }

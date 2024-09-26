@@ -26,6 +26,7 @@
   font-size: 28px;
   font-weight: 700;
   color: inherit; /* Inherit the text color */
+  text-decoration: none;
 }
 
 /* Navigation links styling */
@@ -134,31 +135,77 @@
   cursor: pointer;
 }
 
-/* Dropdown menu styling */
 .profile-dropdown .dropdown-menu {
   position: absolute;
   top: 100%; /* Position dropdown directly below the profile button */
-  left: -160%;
+  left: -14rem;
   background-color: #ffffff; /* White background for dropdown */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   z-index: 1;
-  min-width: 160px;
-  padding: 0;
+  min-width: 200px; /* Increased width for side-by-side layout */
+  padding: 10px 15px; /* Adjust padding */
   margin: 0;
   border: none; /* Remove border */
   display: flex;
   flex-direction: column;
+  align-items: flex-start; /* Align items to the start for proper layout */
+}
+
+/* User info layout: Image on the left, details on the right */
+.profile-dropdown .user-info {
+  display: flex;
+  align-items: center; /* Vertically center image and text */
+  padding: 10px;
+  width: 100%; /* Ensures full width for proper layout */
+}
+
+/* Image styling */
+.profile-dropdown .dropdown-image {
+  width: 50px; /* Adjusted width for the image */
+  height: 50px; /* Adjusted height for the image */
+  border-radius: 50%; /* Circular image */
+  margin-right: 10px; /* Space between image and text */
+  object-fit: cover; /* Ensures the image covers the area */
+}
+
+/* User details (username and email) styling */
+.profile-dropdown .user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dropdown .welcome-message {
+  font-size: 16px; /* Font size for the welcome message */
+  margin: 0;
+  color: #333; /* Text color */
+  font-weight: bold;
+}
+
+.profile-dropdown .user-email {
+  font-size: 14px; /* Slightly smaller font size for the email */
+  color: #666; /* Lighter text color for the email */
+  margin: 0;
+}
+
+/* Separator between user info and action buttons */
+.profile-dropdown .separator {
+  width: 100%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 10px 0;
 }
 
 /* Dropdown item styling */
 .profile-dropdown .dropdown-item {
-  padding: 10px 15px;
+  width: 100%; /* Full width for the items */
+  padding: 10px 15px; /* Adjust padding */
   color: #333333; /* Dark gray text color */
-  text-align: left;
+  text-align: left; /* Left-align text */
   text-decoration: none;
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Align icon and text to the left */
   cursor: pointer;
   background: none; /* No background color */
   border: none; /* Remove border */
@@ -166,8 +213,8 @@
 }
 
 .profile-dropdown .dropdown-item:hover {
-  background-color: #15324b; /* Light gray background on hover */
-  color: #ffffff; /* Darker text color on hover for better contrast */
+  background-color: #15324b; /* Background color on hover */
+  color: #ffffff; /* Text color on hover */
 }
 
 /* Icons inside dropdown items */
@@ -286,4 +333,11 @@
 /* Icons inside dropdown items for dark mode */
 .dark-mode .profile-dropdown .dropdown-item i {
   color: #e0e0e0; /* Ensure icons are visible in dark mode */
+}
+
+.dark-mode .profile-dropdown .dropdown-menu .welcome-message {
+  color: #ffffff;
+}
+.dark-mode .profile-dropdown .dropdown-menu .user-email {
+  color: #ffffff;
 }

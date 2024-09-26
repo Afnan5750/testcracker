@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css";
-import { FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,7 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useAuth(); // Access auth context
+  const [showPassword, setShowPassword] = useState(false);
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -30,6 +31,10 @@ const LoginForm = () => {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="signin-container">
       <div className="signin-box">
@@ -37,10 +42,7 @@ const LoginForm = () => {
         <p>Please sign in to your account and start the adventure</p>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="email">
-              <FaEnvelope className="input-icon" />
-              Email
-            </label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -48,24 +50,32 @@ const LoginForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
+              autoComplete="email"
             />
           </div>
           <div className="input-group">
-            <label htmlFor="password">
-              <FaLock className="input-icon" />
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-            />
-            <a href="#" className="forgot-password">
+            <label htmlFor="password">Password</label>
+            <div className="password-container">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                required
+                autoComplete="password"
+              />
+              <span
+                className="password-toggle-icon"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+            {/* Link to Forgot Password page */}
+            <Link to="/forgot-password" className="forgot-password">
               Forgot Password?
-            </a>
+            </Link>
           </div>
 
           <button className="signin-button" type="submit">
@@ -76,7 +86,7 @@ const LoginForm = () => {
           New on our platform? <Link to="/signup">Create an account</Link>
         </p>
       </div>
-      <ToastContainer /> {/* Add ToastContainer here */}
+      <ToastContainer />
     </div>
   );
 };

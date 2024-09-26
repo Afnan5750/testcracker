@@ -96,7 +96,6 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>Copyrights ©2024 Eduport. Built by Webestica</p>
         <div className="footer-bottom-links">
           <a href="#">Language</a>
           <a href="#">Terms of use</a>

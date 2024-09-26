@@ -43,6 +43,18 @@
   color: #333;
   margin-bottom: 10px;
 }
+.option {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.option.correct-answer {
+  background-color: lightgreen;
+}
+
+.option.incorrect-answer {
+  background-color: lightcoral;
+}
 
 .options-list {
   padding-left: 20px;
@@ -62,10 +74,6 @@
 .options-list li.correct-answer {
   background-color: #d4edda;
   color: #155724;
-}
-
-.options-list li:hover {
-  background-color: #e9ecef;
 }
 
 /* Container for buttons to align them in a row */
@@ -105,6 +113,56 @@
   font-weight: bold;
 }
 
+.mcq-container {
+  position: relative;
+}
+
+.mcq-item.blurred {
+  filter: blur(5px);
+  pointer-events: none; /* Prevent interaction with blurred items */
+  transition: filter 0.3s ease-in-out;
+}
+
+.sign-in-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.8); /* Light transparent overlay */
+  pointer-events: auto; /* Enable click events */
+  z-index: 10;
+}
+
+.sign-in-prompt {
+  color: #dc3545; /* Bootstrap danger color */
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.sign-in-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #15324b; /* Bootstrap primary color */
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.sign-in-btn:hover {
+  background-color: #15324b; /* Darker shade of primary */
+}
+
 /* Dark Theme Styles */
 .dark-mode .mcqs {
   background-color: #010016; /* Dark background color */
@@ -123,6 +181,8 @@
 
 .dark-mode .mcqs .question {
   color: #e0e0e0; /* Light text color for questions */
+  margin-bottom: 10px;
+  font-size: 18px;
 }
 
 .dark-mode .question-status {
@@ -142,8 +202,9 @@
   color: #c3e6cb; /* Light text color for correct answers */
 }
 
-.dark-mode .mcqs .options-list li:hover {
-  background-color: #444; /* Slightly lighter dark color on hover */
+.dark-mode .mcqs .options-list li.incorrect-answer {
+  background-color: #c82333; /* Dark green for correct answers */
+  color: #c3e6cb; /* Light text color for correct answers */
 }
 
 .dark-mode .mcqs .reveal-answer-btn,
@@ -161,4 +222,6 @@
 
 .dark-mode .mcqs .answer {
   color: #e0e0e0; /* Light text color for answers */
+  font-size: 16px;
+  font-weight: bold;
 }

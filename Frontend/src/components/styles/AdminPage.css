@@ -1,0 +1,95 @@
+/* Overall container styling */
+.admin-page {
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+.admin-page h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+/* Label styling */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Select styling */
+select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input styling */
+.customInput {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Button styling */
+.addCustom {
+  background-color: #1d3b53;
+  color: white;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Flexbox container for input and button */
+.input-button-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px; /* Space below the input/button */
+}
+
+.input-button-container input[type="text"] {
+  flex: 1; /* Allow input to grow */
+  margin-right: 10px; /* Space between input and button */
+}
+
+.input-button-container button {
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+/* Dark mode styles */
+.dark-mode .admin-page {
+  background-color: #15324b;
+  color: #ffffff;
+}
+
+.dark-mode .admin-page h1 {
+  color: #ffffff;
+}
+
+.dark-mode label {
+  color: #cccccc;
+}
+
+.dark-mode select,
+.dark-mode input[type="text"] {
+  background-color: #15324b;
+  outline: none;
+  color: #ffffff;
+}

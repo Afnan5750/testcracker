@@ -1,0 +1,166 @@
+.reset-code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.reset-code-box {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+.reset-code-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.reset-code-description {
+  font-size: 16px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reset-code-input-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.reset-code-otp-input {
+  width: 45px;
+  height: 50px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 24px;
+  text-align: center;
+  transition: border-color 0.3s;
+}
+
+.reset-code-otp-input:focus {
+  border-color: #1d3b53;
+  outline: none;
+}
+
+.reset-code-verify-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #1d3b53;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.reset-code-verify-button:disabled {
+  background-color: #6c757d;
+}
+.resend-code-section {
+  margin-top: 10px;
+}
+
+.resend-code-link {
+  cursor: pointer;
+  color: #15324b;
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+
+.reset-code-resend-link {
+  margin-top: 10px;
+}
+
+.resend-disabled {
+  color: #999;
+}
+
+.reset-code-email {
+  margin-bottom: 1.5rem; /* Spacing below the email field */
+}
+
+.reset-code-email label {
+  display: block; /* Ensure the label takes full width */
+  margin-bottom: 0.5rem; /* Space between label and input */
+  font-weight: bold; /* Make the label text bold */
+}
+
+.reset-code-email input {
+  width: 100%; /* Full width input */
+  padding: 0.8rem; /* Padding for the input field */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 1rem; /* Font size */
+  transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.reset-code-email input:focus {
+  border-color: #1d3b53; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+.reset-code-email input:disabled {
+  background-color: #f9f9f9; /* Light background for disabled input */
+  cursor: not-allowed; /* Show not-allowed cursor for disabled input */
+}
+
+.hidden {
+  display: none; /* This hides the element completely */
+}
+
+.dont-receive-code {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Dark mode styles */
+.dark-mode .reset-code-box {
+  background-color: #15324b;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .reset-code-title {
+  color: #ffffff;
+}
+
+.dark-mode .reset-code-description {
+  color: #cccccc;
+}
+
+.dark-mode .reset-code-otp-input {
+  background-color: #444;
+  border: 2px solid #555;
+  color: #ffffff;
+}
+
+.dark-mode .reset-code-otp-input:focus {
+  border-color: #1d3b53;
+}
+
+.dark-mode .reset-code-verify-button {
+  background-color: #0056b3;
+}
+
+.dark-mode .reset-code-verify-button:disabled {
+  background-color: #555;
+}
+
+.dark-mode .reset-code-email input {
+  background-color: #15324b;
+  color: #fff;
+  border: 2px solid #555;
+}
+
+.dark-mode .resend-code-link {
+  color: #ffffff;
+}
+
+.dark-mode .dont-receive-code {
+  color: #ffffff;
+}

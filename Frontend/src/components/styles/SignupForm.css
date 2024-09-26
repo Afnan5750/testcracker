@@ -61,7 +61,7 @@
 }
 
 .btn-signup {
-  background-color: #3d74fa;
+  background-color: #1d3b53;
   color: white;
   border: none;
   border-radius: 4px;
@@ -72,7 +72,7 @@
 }
 
 .btn-signup:hover {
-  background-color: #3361d6;
+  background-color: #15324b;
 }
 
 .already-have-account {
@@ -81,7 +81,7 @@
 }
 
 .already-have-account a {
-  color: #3d74fa;
+  color: #15324b;
   text-decoration: none;
 }
 

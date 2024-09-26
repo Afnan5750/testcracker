@@ -1,0 +1,74 @@
+/* src/components/pages/NotFoundPage.css */
+.notfound-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  font-family: "Arial", sans-serif;
+}
+
+.notfound-content {
+  text-align: center;
+  animation: fadeIn 1.5s ease;
+}
+
+.notfound-title {
+  font-size: 8rem;
+  font-weight: bold;
+  color: #1d3b53;
+  margin-bottom: 0.5rem;
+}
+
+.notfound-message {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.notfound-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #1d3b53;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.notfound-button:hover {
+  background-color: #15324b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dark mode styles */
+.dark-mode .notfound-container {
+  background-color: #010016; /* Dark background */
+}
+
+.dark-mode .notfound-title {
+  color: #fff; /* Lighter red for dark background */
+}
+
+.dark-mode .notfound-message {
+  color: #ddd; /* Light gray text for dark mode */
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.dark-mode .notfound-button {
+  background-color: #15324b; /* Softer button color */
+}
+
+.dark-mode .notfound-button:hover {
+  background-color: #112a41; /* Hover color for dark mode */
+}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "../styles/SignupForm.css";
-import { FaUser, FaEnvelope, FaLock } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,7 +11,9 @@ const SignupForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,6 +44,15 @@ const SignupForm = () => {
     }
   };
 
+  // Toggle password visibility functions
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="signup-container">
       <div className="signup-box">
@@ -49,10 +60,7 @@ const SignupForm = () => {
         <p>Fill in the details below to create your account.</p>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <label htmlFor="username">
-              <FaUser className="input-icon" />
-              Username
-            </label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
               id="username"
@@ -60,13 +68,11 @@ const SignupForm = () => {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="Enter your username"
               required
+              autoComplete="username"
             />
           </div>
           <div className="input-group">
-            <label htmlFor="email">
-              <FaEnvelope className="input-icon" />
-              Email
-            </label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -74,35 +80,49 @@ const SignupForm = () => {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
+              autoComplete="email"
             />
           </div>
           <div className="input-group">
-            <label htmlFor="password">
-              <FaLock className="input-icon" />
-              Password
-            </label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-            />
+            <label htmlFor="password">Password</label>
+            <div className="input-with-icon">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                required
+                autoComplete="password"
+              />
+              <span
+                onClick={togglePasswordVisibility}
+                className="toggle-password-icon"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
+
           <div className="input-group">
-            <label htmlFor="confirmPassword">
-              <FaLock className="input-icon" />
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm your password"
-              required
-            />
+            <label htmlFor="confirmPassword">Confirm Password</label>
+            <div className="input-with-icon">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                id="confirmPassword"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm your password"
+                required
+                autoComplete="confirm password"
+              />
+              <span
+                onClick={toggleConfirmPasswordVisibility}
+                className="toggle-password-icon"
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
           <button className="btn btn-signup" type="submit">
             Sign Up

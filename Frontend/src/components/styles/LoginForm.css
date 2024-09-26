@@ -51,16 +51,27 @@ p {
   border-radius: 4px;
   box-sizing: border-box;
 }
+.password-container {
+  position: relative;
+}
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
 
 .forgot-password {
   font-size: 12px;
-  color: #3d74fa;
+  color: #15324b;
   display: block;
   margin-top: 5px;
 }
 
 .signin-button {
-  background-color: #3d74fa;
+  background-color: #1d3b53;
   color: white;
   border: none;
   border-radius: 4px;
@@ -71,7 +82,7 @@ p {
 }
 
 .signin-button:hover {
-  background-color: #3361d6;
+  background-color: #15324b;
 }
 
 .create-account {
@@ -80,7 +91,7 @@ p {
 }
 
 .create-account a {
-  color: #3d74fa;
+  color: #15324b;
   text-decoration: none;
 }
 

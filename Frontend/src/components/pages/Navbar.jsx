@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import "../styles/Navbar.css"; // Ensure this file exists and is correctly configured
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
+import "../styles/Navbar.css";
 
 const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { isAuthenticated, logout } = useAuth(); // Assuming AuthContext provides user authentication
+  const { isAuthenticated, logout } = useAuth();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const dropdownRef = useRef(null);
 
@@ -19,6 +24,35 @@ const Navbar = () => {
       document.body.classList.remove("dark-mode");
     }
   }, []);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const token = localStorage.getItem("token");
+
+      if (token) {
+        try {
+          const response = await axios.get("http://localhost:5001/api/user", {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUsername(response.data.username);
+          setEmail(response.data.email);
+        } catch (error) {
+          console.error(
+            "Error fetching user data:",
+            error.response?.data || error.message
+          );
+          console.error("Error fetching user data:", error);
+          toast.error("Error fetching user data");
+        }
+      }
+    };
+
+    if (isAuthenticated) {
+      fetchUserData();
+    }
+  }, [isAuthenticated]);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -64,6 +98,7 @@ const Navbar = () => {
   };
 
   const handleLogoutClick = () => {
+    setIsDropdownOpen(false);
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
       logout();
@@ -76,9 +111,16 @@ const Navbar = () => {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  const handleProfileClick = () => {
+    navigate("/profile");
+    setIsDropdownOpen(false); // Optional: Close the dropdown if desired
+  };
+
   return (
     <nav className="navbar">
-      <div className="logo">Quizr</div>
+      <Link to="/" className="logo">
+        Quizr
+      </Link>
       <ul className="nav-links">
         <li>
           <a href="/">Home</a>
@@ -106,8 +148,10 @@ const Navbar = () => {
             MCQs <i className="fas fa-caret-down"></i>
           </a>
           <div className="dropdown-content">
-            <a href="/mcqs/science">Science</a>
-            <a href="/mcqs/math">Math</a>
+            <a href="/chapter-detail-subject/math">Math</a>
+            <a href="/chapter-detail-subject/biology">Biology</a>
+            <a href="/chapter-detail-subject/chemistry">Chemistry</a>
+            <a href="/chapter-detail-subject/computer">Computer</a>
           </div>
         </li>
       </ul>
@@ -142,16 +186,30 @@ const Navbar = () => {
               <i className="fas fa-user-circle profile-icon"></i>
             </button>
             {isDropdownOpen && (
-              <div className="dropdown-menu">
-                <button
-                  className="dropdown-item"
-                  onClick={() => navigate("/profile")}
-                >
-                  <i className="fas fa-user"></i> Profile
-                </button>
-                <button className="dropdown-item" onClick={handleLogoutClick}>
-                  <i className="fas fa-sign-out-alt"></i> Logout
-                </button>
+              <div className="profile-dropdown">
+                <div className="dropdown-menu">
+                  <div className="user-info">
+                    <img
+                      src="src/assets/Profile.jpg"
+                      alt="User Avatar"
+                      className="dropdown-image"
+                    />
+                    <div className="user-details">
+                      <p className="welcome-message">{username}</p>
+                      <p className="user-email">{email}</p>
+                    </div>
+                  </div>
+                  <div className="separator"></div>
+                  <button
+                    className="dropdown-item"
+                    onClick={handleProfileClick}
+                  >
+                    <i className="fas fa-user"></i> Profile
+                  </button>
+                  <button className="dropdown-item" onClick={handleLogoutClick}>
+                    <i className="fas fa-sign-out-alt"></i> Logout
+                  </button>
+                </div>
               </div>
             )}
           </div>

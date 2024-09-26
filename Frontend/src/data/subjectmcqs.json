@@ -1,0 +1,171 @@
+{
+    "Math": {
+      "1": [
+        {
+          "question": "What is 2 + 2?",
+          "options": [
+            { "option": "A", "text": "3", "isCorrect": false },
+            { "option": "B", "text": "4", "isCorrect": true },
+            { "option": "C", "text": "5", "isCorrect": false },
+            { "option": "D", "text": "6", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What is the derivative of x^2?",
+          "options": [
+            { "option": "A", "text": "x", "isCorrect": false },
+            { "option": "B", "text": "2x", "isCorrect": true },
+            { "option": "C", "text": "3x^2", "isCorrect": false },
+            { "option": "D", "text": "4x", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What is the integral of 1/x dx?",
+          "options": [
+            { "option": "A", "text": "ln(x)", "isCorrect": true },
+            { "option": "B", "text": "x", "isCorrect": false },
+            { "option": "C", "text": "1/x", "isCorrect": false },
+            { "option": "D", "text": "e^x", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What is the sum of the angles in a triangle?",
+          "options": [
+            { "option": "A", "text": "180 degrees", "isCorrect": true },
+            { "option": "B", "text": "90 degrees", "isCorrect": false },
+            { "option": "C", "text": "360 degrees", "isCorrect": false },
+            { "option": "D", "text": "270 degrees", "isCorrect": false }
+          ]
+        }
+      ],
+      "2": [
+        {
+          "question": "What is the quadratic formula?",
+          "options": [
+            { "option": "A", "text": "x = (-b ± √(b²-4ac)) / 2a", "isCorrect": true },
+            { "option": "B", "text": "x = (b ± √(a²-4bc)) / 2a", "isCorrect": false },
+            { "option": "C", "text": "x = (-b ± √(b²+4ac)) / 2a", "isCorrect": false },
+            { "option": "D", "text": "x = (-b ± √(b²-4ac)) / a", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What is the Pythagorean theorem?",
+          "options": [
+            { "option": "A", "text": "a² + b² = c²", "isCorrect": true },
+            { "option": "B", "text": "a² + b² = d²", "isCorrect": false },
+            { "option": "C", "text": "a² - b² = c²", "isCorrect": false },
+            { "option": "D", "text": "a² + b² = 2c", "isCorrect": false }
+          ]
+        }
+      ]
+    },
+    "Biology": {
+      "1": [
+        {
+          "question": "What is the powerhouse of the cell?",
+          "options": [
+            { "option": "A", "text": "Nucleus", "isCorrect": false },
+            { "option": "B", "text": "Mitochondria", "isCorrect": true },
+            { "option": "C", "text": "Ribosome", "isCorrect": false },
+            { "option": "D", "text": "Golgi apparatus", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "Which organelle is known as the 'control center' of the cell?",
+          "options": [
+            { "option": "A", "text": "Nucleus", "isCorrect": true },
+            { "option": "B", "text": "Mitochondria", "isCorrect": false },
+            { "option": "C", "text": "Ribosome", "isCorrect": false },
+            { "option": "D", "text": "Golgi apparatus", "isCorrect": false }
+          ]
+        }
+      ],
+      "2": [
+        {
+          "question": "What is the role of chlorophyll in photosynthesis?",
+          "options": [
+            { "option": "A", "text": "To absorb light", "isCorrect": true },
+            { "option": "B", "text": "To produce oxygen", "isCorrect": false },
+            { "option": "C", "text": "To convert carbon dioxide", "isCorrect": false },
+            { "option": "D", "text": "To absorb water", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What type of cell division results in four non-identical cells?",
+          "options": [
+            { "option": "A", "text": "Mitosis", "isCorrect": false },
+            { "option": "B", "text": "Meiosis", "isCorrect": true },
+            { "option": "C", "text": "Binary fission", "isCorrect": false },
+            { "option": "D", "text": "Cytokinesis", "isCorrect": false }
+          ]
+        }
+      ]
+    },
+    "Chemistry": {
+      "1": [
+        {
+          "question": "What is the chemical symbol for water?",
+          "options": [
+            { "option": "A", "text": "H2O", "isCorrect": true },
+            { "option": "B", "text": "CO2", "isCorrect": false },
+            { "option": "C", "text": "O2", "isCorrect": false },
+            { "option": "D", "text": "N2", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What is the pH of a neutral solution?",
+          "options": [
+            { "option": "A", "text": "7", "isCorrect": true },
+            { "option": "B", "text": "0", "isCorrect": false },
+            { "option": "C", "text": "14", "isCorrect": false },
+            { "option": "D", "text": "4", "isCorrect": false }
+          ]
+        }
+      ],
+      "2": [
+        {
+          "question": "What is the name of the process where a solid changes directly into a gas?",
+          "options": [
+            { "option": "A", "text": "Sublimation", "isCorrect": true },
+            { "option": "B", "text": "Evaporation", "isCorrect": false },
+            { "option": "C", "text": "Condensation", "isCorrect": false },
+            { "option": "D", "text": "Melting", "isCorrect": false }
+          ]
+        }
+      ]
+    },
+    "Computer": {
+      "1": [
+        {
+          "question": "What does HTML stand for?",
+          "options": [
+            { "option": "A", "text": "HyperText Markup Language", "isCorrect": true },
+            { "option": "B", "text": "HyperText Machine Language", "isCorrect": false },
+            { "option": "C", "text": "Hyperlink Text Markup Language", "isCorrect": false },
+            { "option": "D", "text": "Hyperlink Machine Language", "isCorrect": false }
+          ]
+        },
+        {
+          "question": "What does CSS stand for?",
+          "options": [
+            { "option": "A", "text": "Cascading Style Sheets", "isCorrect": true },
+            { "option": "B", "text": "Computer Style Sheets", "isCorrect": false },
+            { "option": "C", "text": "Creative Style Sheets", "isCorrect": false },
+            { "option": "D", "text": "Cascading Style Scripts", "isCorrect": false }
+          ]
+        }
+      ],
+      "2": [
+        {
+          "question": "Which HTML tag is used to define an internal style sheet?",
+          "options": [
+            { "option": "A", "text": "<style>", "isCorrect": true },
+            { "option": "B", "text": "<script>", "isCorrect": false },
+            { "option": "C", "text": "<link>", "isCorrect": false },
+            { "option": "D", "text": "<css>", "isCorrect": false }
+          ]
+        }
+      ]
+    }
+  }
+  
