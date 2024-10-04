@@ -1,0 +1,110 @@
+.add-mcqs-form {
+  max-width: 600px; /* Maximum width for the form */
+  margin: 20px auto; /* Center the form */
+  padding: 20px; /* Add padding around the form */
+  border-radius: 8px; /* Rounded corners */
+  margin-top: 100px; /* Space above the form */
+  background-color: #f9f9f9; /* Light background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.add-mcqs-form__title {
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Space below the heading */
+  color: #333; /* Darker text color */
+}
+
+.add-mcqs-form__field {
+  margin-bottom: 20px; /* Space between form fields */
+}
+
+.add-mcqs-form__label {
+  display: block; /* Block layout for labels */
+  margin-bottom: 8px; /* Space below labels */
+  font-weight: bold; /* Bold font for labels */
+  color: #555; /* Darker color for labels */
+}
+
+.add-mcqs-form__input-text,
+.add-mcqs-form__textarea,
+.add-mcqs-form__input-number {
+  width: 100%; /* Full width for inputs */
+  padding: 12px; /* Padding inside the inputs */
+  border: 1px solid #ccc; /* Light border for inputs */
+  border-radius: 4px; /* Slightly rounded corners */
+  box-sizing: border-box; /* Include padding in width */
+  transition: border-color 0.3s ease; /* Smooth border color transition */
+}
+
+.add-mcqs-form__input-text:focus,
+.add-mcqs-form__textarea:focus,
+.add-mcqs-form__input-number:focus {
+  border-color: #007bff; /* Blue border on focus */
+  outline: none; /* Remove default outline */
+}
+
+.add-mcqs-form__input-radio {
+  margin-right: 5px; /* Space between radio button and label */
+}
+
+.add-mcqs-form__option {
+  margin-bottom: 10px; /* Space between options */
+}
+
+.add-mcqs-form__button {
+  width: 100%; /* Full width for the button */
+  padding: 12px; /* Padding for the button */
+  background-color: #15324b; /* Button background color */
+  color: white; /* White text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Slightly rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size for the button */
+  transition: background-color 0.3s ease; /* Smooth background color transition */
+}
+
+.add-mcqs-form__button:hover {
+  background-color: #1d3b53; /* Darker shade on hover */
+}
+
+/* Textarea Specific Styles */
+.add-mcqs-form__textarea {
+  resize: vertical; /* Allow vertical resizing only */
+  min-height: 80px; /* Minimum height for text area */
+}
+
+/* Dark mode styles */
+.dark-mode .add-mcqs-form {
+  background-color: #15324b; /* Dark background for the form */
+  border: 1px solid #444; /* Darker border for the form */
+  box-shadow: none; /* Remove shadow in dark mode */
+}
+
+.dark-mode .add-mcqs-form__title {
+  color: #ffffff; /* Light color for title */
+}
+
+.dark-mode .add-mcqs-form__label {
+  color: #cccccc; /* Lighter color for labels */
+}
+
+.dark-mode .add-mcqs-form__input-text,
+.dark-mode .add-mcqs-form__textarea,
+.dark-mode .add-mcqs-form__input-number {
+  background-color: #15324b; /* Dark background for inputs */
+  border: 1px solid #555; /* Darker border for inputs */
+  color: #ffffff; /* Light text color for inputs */
+}
+
+.dark-mode .add-mcqs-form__input-text::placeholder,
+.dark-mode .add-mcqs-form__textarea::placeholder {
+  color: #aaa; /* Light gray placeholder text */
+}
+
+.dark-mode .add-mcqs-form__button {
+  background-color: #0066cc; /* Darker blue for button in dark mode */
+}
+
+.dark-mode .add-mcqs-form__button:hover {
+  background-color: #004d99; /* Even darker blue on hover */
+}

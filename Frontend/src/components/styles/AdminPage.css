@@ -1,95 +1,69 @@
-/* Overall container styling */
-.admin-page {
-  max-width: 600px;
-  margin: 100px auto;
-  padding: 40px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Header styling */
-.admin-page h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 28px;
-  color: #333;
-}
-
-/* Label styling */
-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  color: #555;
-}
-
-/* Select styling */
-select {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
-/* Input styling */
-.customInput {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
-  color: #333;
-}
-
-/* Button styling */
-.addCustom {
-  background-color: #1d3b53;
-  color: white;
-  padding: 12px 15px;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-/* Flexbox container for input and button */
-.input-button-container {
+.admin-container {
   display: flex;
-  align-items: center;
-  margin-bottom: 20px; /* Space below the input/button */
+  height: 100vh;
 }
 
-.input-button-container input[type="text"] {
-  flex: 1; /* Allow input to grow */
-  margin-right: 10px; /* Space between input and button */
+.admin-sidebar {
+  width: 250px;
+  background-color: #15324b;
+  color: #2c3e50;
+  padding: 20px;
+  margin-top: 85px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.input-button-container button {
-  flex-shrink: 0; /* Prevent the button from shrinking */
-}
-
-/* Dark mode styles */
-.dark-mode .admin-page {
+.admin-sidebar-button {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
   background-color: #15324b;
   color: #ffffff;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
 }
 
-.dark-mode .admin-page h1 {
-  color: #ffffff;
+.admin-sidebar-button:hover {
+  background-color: #1d3b53;
 }
 
-.dark-mode label {
-  color: #cccccc;
+.admin-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
 }
 
-.dark-mode select,
-.dark-mode input[type="text"] {
+.dark-mode .admin-container {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .admin-sidebar {
   background-color: #15324b;
-  outline: none;
   color: #ffffff;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .admin-sidebar-button {
+  background-color: #1d3b53;
+}
+
+.dark-mode .admin-content {
+  background-color: #010016;
+  color: #ffffff;
+}
+
+.admin-content h1 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+.admin-content p {
+  color: #7f8c8d;
 }

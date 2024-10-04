@@ -1,22 +1,37 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom"; // Import useNavigate
 import { useAuth } from "../../context/AuthContext";
-import mcqsData from "../../data/mcqs.json";
+import axios from "axios";
 import "../styles/Mcqs.css";
 
-const UNAUTHORIZED_ATTEMPT_LIMIT = "mcqs.length"; // If want set limit for unauthorized user then simple write how many number of question cam user attempt. If you want unauthorized user solve only 5 question then simple write 5 Instead of "mcqs.length". Like const UNAUTHORIZED_ATTEMPT_LIMIT = 5;
+const UNAUTHORIZED_ATTEMPT_LIMIT = "Mcqs.length";
 
 const Mcqs = () => {
   const { category, chapterNumber } = useParams();
+  const navigate = useNavigate(); // Initialize useNavigate
   const [currentIndex, setCurrentIndex] = useState(0);
   const [revealedAnswer, setRevealedAnswer] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({});
   const { isAuthenticated } = useAuth();
   const [unauthorizedAttempts, setUnauthorizedAttempts] = useState(0);
-  const navigate = useNavigate();
+  const [mcqs, setMcqs] = useState([]);
+  const [error, setError] = useState(null);
 
-  const mcqs = mcqsData[category]?.[chapterNumber] || [];
+  useEffect(() => {
+    const fetchMCQs = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/api/job-mcqs/${category}/${chapterNumber}`
+        );
+        setMcqs(response.data);
+      } catch (error) {
+        console.error("Error fetching MCQs:", error);
+        setError("Failed to fetch MCQs.");
+      }
+    };
+
+    fetchMCQs();
+  }, [category, chapterNumber]);
 
   const handleRevealAnswer = () => {
     setRevealedAnswer(!revealedAnswer);
@@ -27,7 +42,7 @@ const Mcqs = () => {
       !isAuthenticated &&
       unauthorizedAttempts >= UNAUTHORIZED_ATTEMPT_LIMIT
     ) {
-      return; // Prevent advancing to the next question until user is authenticated
+      return;
     }
     setRevealedAnswer(false);
     setSelectedOptions((prevOptions) => ({
@@ -67,7 +82,93 @@ const Mcqs = () => {
   };
 
   const handleSignInClick = () => {
-    navigate("/login");
+    navigate("/login"); // Navigate to the Sign In page
+  };
+
+  const renderMCQ = () => {
+    if (error) return <p>{error}</p>;
+    if (mcqs.length === 0) return <p>No MCQs available.</p>;
+
+    const mcq = mcqs[currentIndex];
+
+    return (
+      <div
+        className={`mcq-item ${
+          unauthorizedAttempts >= UNAUTHORIZED_ATTEMPT_LIMIT && !isAuthenticated
+            ? "blurred"
+            : ""
+        }`}
+      >
+        <div className="question-status-container">
+          <div className="question-status">
+            Question {currentIndex + 1} of {mcqs.length}
+          </div>
+        </div>
+        <h2 className="question">{mcq.question}</h2>
+        <ul className="options-list">
+          {mcq.options.map((option, index) => {
+            let optionClass = "";
+            const selectedOption = selectedOptions[currentIndex];
+            if (revealedAnswer && option.isCorrect) {
+              optionClass = "correct-answer";
+            } else if (selectedOption && selectedOption.text === option.text) {
+              optionClass = option.isCorrect
+                ? "correct-answer"
+                : "incorrect-answer";
+            }
+            return (
+              <li
+                key={index}
+                className={`option ${optionClass}`}
+                onClick={() => handleOptionClick(option)}
+                style={{
+                  cursor: selectedOption ? "not-allowed" : "pointer",
+                }}
+                aria-label={option.text}
+              >
+                {option.text}
+              </li>
+            );
+          })}
+        </ul>
+        <div className="button-container">
+          <button
+            className="back-question-btn"
+            onClick={handleBackQuestion}
+            disabled={currentIndex === 0}
+            aria-label="Previous question"
+          >
+            Back
+          </button>
+
+          <button
+            className="reveal-answer-btn"
+            onClick={handleRevealAnswer}
+            aria-label={revealedAnswer ? "Hide answer" : "Show answer"}
+          >
+            {revealedAnswer ? "Hide Answer" : "Show Answer"}
+          </button>
+
+          <button
+            className="next-question-btn"
+            onClick={handleNextQuestion}
+            disabled={currentIndex >= mcqs.length - 1}
+            aria-label="Next question"
+          >
+            Next
+          </button>
+        </div>
+
+        {revealedAnswer && (
+          <p className="answer">
+            Explanation:{" "}
+            <strong>
+              <p className="explanation">{mcq.explanation}</p>
+            </strong>
+          </p>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -75,111 +176,16 @@ const Mcqs = () => {
       <h1>
         {category} Chapter {chapterNumber} MCQs
       </h1>
-      <div className="question-status-container">
-        <div className="question-status">
-          Question {currentIndex + 1} / {mcqs.length}
-        </div>
-      </div>
-
-      {mcqs.length > 0 && (
-        <div className="mcq-container">
-          <div
-            className={`mcq-item ${
-              unauthorizedAttempts >= UNAUTHORIZED_ATTEMPT_LIMIT &&
-              !isAuthenticated
-                ? "blurred"
-                : ""
-            }`}
-          >
-            <p className="question">{mcqs[currentIndex].question}</p>
-            <ul className="options-list">
-              {mcqs[currentIndex].options.map((option, i) => {
-                let optionClass = "";
-                const selectedOption = selectedOptions[currentIndex];
-                if (revealedAnswer && option.isCorrect) {
-                  optionClass = "correct-answer";
-                } else if (
-                  selectedOption &&
-                  selectedOption.option === option.option
-                ) {
-                  optionClass = option.isCorrect
-                    ? "correct-answer"
-                    : "incorrect-answer";
-                }
-                return (
-                  <li
-                    key={i}
-                    className={`option ${optionClass}`}
-                    onClick={() => handleOptionClick(option)}
-                    style={{
-                      cursor: selectedOption ? "not-allowed" : "pointer",
-                    }}
-                    aria-label={option.text}
-                  >
-                    {option.option}. {option.text}
-                  </li>
-                );
-              })}
-            </ul>
-            <div className="button-container">
-              <button
-                className="back-question-btn"
-                onClick={handleBackQuestion}
-                disabled={currentIndex === 0}
-                aria-label="Previous question"
-              >
-                Back
-              </button>
-
-              <button
-                className="reveal-answer-btn"
-                onClick={handleRevealAnswer}
-                aria-label={revealedAnswer ? "Hide answer" : "Show answer"}
-              >
-                {revealedAnswer ? "Hide Answer" : "Show Answer"}
-              </button>
-
-              <button
-                className="next-question-btn"
-                onClick={handleNextQuestion}
-                disabled={currentIndex >= mcqs.length - 1}
-                aria-label="Next question"
-              >
-                Next
-              </button>
-            </div>
-
-            {revealedAnswer && (
-              <p className="answer">
-                Correct Answer:{" "}
-                <strong>
-                  {
-                    mcqs[currentIndex].options.find((opt) => opt.isCorrect)
-                      ?.option
-                  }
-                  .{" "}
-                  {
-                    mcqs[currentIndex].options.find((opt) => opt.isCorrect)
-                      ?.text
-                  }
-                </strong>
-              </p>
-            )}
+      {renderMCQ()}
+      {!isAuthenticated &&
+        unauthorizedAttempts >= UNAUTHORIZED_ATTEMPT_LIMIT && (
+          <div className="sign-in-container">
+            <h4 className="sign-in-prompt">Please sign in to continue.</h4>
+            <button className="sign-in-btn" onClick={handleSignInClick}>
+              Sign In
+            </button>
           </div>
-
-          {!isAuthenticated &&
-            unauthorizedAttempts >= UNAUTHORIZED_ATTEMPT_LIMIT && (
-              <div className="sign-in-container">
-                <h4 className="sign-in-prompt">Please sign in to continue.</h4>
-                <button className="sign-in-btn" onClick={handleSignInClick}>
-                  Sign In
-                </button>
-              </div>
-            )}
-        </div>
-      )}
-
-      {mcqs.length === 0 && <p>No MCQs available for this chapter.</p>}
+        )}
     </section>
   );
 };

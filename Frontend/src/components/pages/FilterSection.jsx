@@ -1,35 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "../styles/FilterSection.css";
 
-const FilterSection = () => {
+const FilterSectionSubject = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [quizzes, setQuizzes] = useState([]);
   const navigate = useNavigate();
 
-  const quizzes = [
-    {
-      category: "Power",
-      title: "Power Quiz",
-      subtitle: "Explore the fundamentals of power systems.",
-      image: "src/assets/power1.jpg",
-      totalMCQs: 20,
-    },
-    {
-      category: "Ministry",
-      title: "Ministry Quiz",
-      subtitle: "Understand the workings of various ministries.",
-      image: "src/assets/ministry1.jpg",
-      totalMCQs: 15,
-    },
-    {
-      category: "Wapda",
-      title: "Wapda Quiz",
-      subtitle: "Learn about the water and power development authority.",
-      image: "src/assets/wapda1.jpg",
-      totalMCQs: 30,
-    },
-  ];
+  // Fetch quizzes from the API
+  useEffect(() => {
+    const fetchQuizzes = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5001/api/jobsubjects"
+        );
+        setQuizzes(response.data);
+      } catch (error) {
+        console.error("Error fetching quizzes:", error);
+      }
+    };
+
+    fetchQuizzes();
+  }, []);
 
   const handleSearch = (e) => {
     const query = e.target.value;
@@ -79,13 +73,13 @@ const FilterSection = () => {
       <div className="quiz-grid">
         {filteredQuizzes.map((quiz, index) => (
           <div key={index} className="quiz-box">
-            <img src={quiz.image} alt={quiz.title} />
+            <img src={`http://localhost:5001/${quiz.image}`} alt={quiz.title} />
             <p className="quiz-title">{quiz.title}</p>
             <p className="subtitle">{quiz.subtitle}</p>
             <div className="details">
               <span>
                 <i className="fas fa-list-ul totalMCQs"></i> Total MCQs:{" "}
-                {quiz.totalMCQs}
+                {quiz.totalMCQs || "N/A"}
               </span>
               <span>
                 <button
@@ -103,4 +97,4 @@ const FilterSection = () => {
   );
 };
 
-export default FilterSection;
+export default FilterSectionSubject;

@@ -20,6 +20,14 @@ import AdminPage from "./components/pages/AdminPage";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import ResetCode from "./components/pages/ResetCode";
 import ResetPassword from "./components/pages/ResetPassword";
+import AddSubjectForm from "./components/pages/AddSubjectForm";
+import AddJobSubjectForm from "./components/pages/AddJobSubjectForm";
+import AddSubjectChapterForm from "./components/pages/AddSubjectChapterForm";
+import AddJobChapterForm from "./components/pages/AddJobChapterForm";
+import AddSubjectMcqsForm from "./components/pages/AddSubjectMcqsForm";
+import AddJobMcqsForm from "./components/pages/AddJobMcqsForm";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -28,6 +36,15 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
+          <ToastContainer // Add ToastContainer here
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            closeOnClick
+            pauseOnHover
+            draggable
+            pauseOnFocusLoss
+          />
           <Routes>
             <Route
               path="/"
@@ -49,7 +66,11 @@ function App() {
               path="/chapter-detail-subject/:category"
               element={<ChapterDetailSubject />}
             />
-            <Route path="/mcqs/:category/:chapterNumber" element={<Mcqs />} />
+            <Route
+              path="/job-subject-mcqs/:category/:chapterNumber"
+              element={<Mcqs />}
+            />
+
             <Route
               path="/subject-mcqs/:category/:chapterNumber"
               element={<SubjectMcqs />}
@@ -61,6 +82,12 @@ function App() {
             <Route path="/signup" element={<SignupForm />} />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="/add-subject" element={<AddSubjectForm />} />
+            <Route path="/add-job-subject" element={<AddJobSubjectForm />} />
+            <Route path="/add-chapter" element={<AddSubjectChapterForm />} />
+            <Route path="/add-job-chapter" element={<AddJobChapterForm />} />
+            <Route path="/add-mcqs" element={<AddSubjectMcqsForm />} />
+            <Route path="/add-job-mcqs" element={<AddJobMcqsForm />} />
           </Routes>
           <Footer />
         </div>

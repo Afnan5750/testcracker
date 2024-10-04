@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
-import submcqsData from "../../data/subjectmcqs.json";
+import axios from "axios"; // Import Axios
 import "../styles/Mcqs.css";
 
 const UNAUTHORIZED_ATTEMPT_LIMIT = "mcqs.length";
@@ -13,12 +13,27 @@ const SubjectMcqs = () => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const { isAuthenticated } = useAuth();
   const [unauthorizedAttempts, setUnauthorizedAttempts] = useState(0);
+  const [mcqs, setMcqs] = useState([]); // State to hold MCQs
   const navigate = useNavigate();
 
-  // Normalize category to match data keys
+  // Normalize category to match API keys
   const normalizedCategory =
     category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-  const mcqs = submcqsData[normalizedCategory]?.[chapterNumber] || [];
+
+  useEffect(() => {
+    const fetchMcqs = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5001/api/mcqs/${normalizedCategory}/${chapterNumber}`
+        );
+        setMcqs(response.data); // Set the fetched MCQs
+      } catch (error) {
+        console.error("Error fetching MCQs:", error);
+      }
+    };
+
+    fetchMcqs();
+  }, [normalizedCategory, chapterNumber]);
 
   const handleRevealAnswer = () => {
     setRevealedAnswer(!revealedAnswer);
@@ -102,7 +117,7 @@ const SubjectMcqs = () => {
                   optionClass = "correct-answer";
                 } else if (
                   selectedOption &&
-                  selectedOption.option === option.option
+                  selectedOption.text === option.text
                 ) {
                   optionClass = option.isCorrect
                     ? "correct-answer"
@@ -118,7 +133,7 @@ const SubjectMcqs = () => {
                     }}
                     aria-label={option.text}
                   >
-                    {option.option}. {option.text}
+                    {option.text}
                   </li>
                 );
               })}
@@ -153,17 +168,18 @@ const SubjectMcqs = () => {
 
             {revealedAnswer && (
               <p className="answer">
-                Correct Answer:{" "}
+                {/* Correct Answer:{" "}
                 <strong>
-                  {
-                    mcqs[currentIndex].options.find((opt) => opt.isCorrect)
-                      ?.option
-                  }
-                  .{" "}
                   {
                     mcqs[currentIndex].options.find((opt) => opt.isCorrect)
                       ?.text
                   }
+                </strong> */}
+                Explanation:{" "}
+                <strong>
+                  <p className="explanation">
+                    {mcqs[currentIndex].explanation}
+                  </p>
                 </strong>
               </p>
             )}
