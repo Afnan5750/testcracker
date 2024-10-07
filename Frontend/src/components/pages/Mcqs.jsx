@@ -82,7 +82,7 @@ const Mcqs = () => {
   };
 
   const handleSignInClick = () => {
-    navigate("/login"); // Navigate to the Sign In page
+    navigate("/login");
   };
 
   const renderMCQ = () => {
@@ -120,7 +120,11 @@ const Mcqs = () => {
               <li
                 key={index}
                 className={`option ${optionClass}`}
-                onClick={() => handleOptionClick(option)}
+                onClick={() => {
+                  if (!selectedOption) {
+                    handleOptionClick(option); // Only allow if no option is selected
+                  }
+                }}
                 style={{
                   cursor: selectedOption ? "not-allowed" : "pointer",
                 }}

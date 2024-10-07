@@ -21,8 +21,28 @@
 
 h2 {
   font-size: 22px; /* Adjusted font size */
-  margin-bottom: 15px;
+  /* margin-bottom: 15px; */
   color: #333; /* Dark text color */
+}
+
+.welcome-text {
+  align-items: center; /* Center the text vertically */
+  text-decoration: none; /* Remove underline */
+  color: #333; /* Dark gray color for the text */
+}
+
+/* Styling for "Test" */
+.test {
+  color: #1d3b53; /* Professional blue color for "Test" */
+  font-family: "Roboto", sans-serif; /* Professional font for "Test" */
+}
+
+/* Styling for "Cracker" */
+.cracker {
+  font-weight: 400; /* Normal weight for "Cracker" */
+  color: #ff6f61; /* Warm coral color for "Cracker" */
+  font-family: "Poppins", sans-serif; /* Modern font for "Cracker" */
+  margin: 0 2px; /* Small margin for spacing */
 }
 
 p {
@@ -175,4 +195,8 @@ p {
 
 .dark-mode .create-account a:hover {
   text-decoration: underline;
+}
+
+.dark-mode .test {
+  color: #f7f7f7;
 }

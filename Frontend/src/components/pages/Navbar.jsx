@@ -119,7 +119,8 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="logo">
-        Quizr
+        <span className="test">Test</span>
+        <span className="cracker">Cracker</span>
       </Link>
       <ul className="nav-links">
         <li>

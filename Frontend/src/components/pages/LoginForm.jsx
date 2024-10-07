@@ -38,7 +38,11 @@ const LoginForm = () => {
   return (
     <div className="signin-container">
       <div className="signin-box">
-        <h2>Welcome to Quizr! 👋</h2>
+        <h2 className="welcome-text">
+          Welcome to <span className="test">Test</span>
+          <span className="cracker">Cracker</span>! 👋
+        </h2>
+
         <p>Please sign in to your account and start the adventure</p>
         <form onSubmit={handleSubmit}>
           <div className="input-group">

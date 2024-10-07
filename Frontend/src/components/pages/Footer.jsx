@@ -6,9 +6,13 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-logo">
-          <h2 className="logo-text">Quizr</h2>
+          <h2 className="logo-text">
+            <span className="test">Test</span>
+            <span className="cracker">Cracker</span>
+          </h2>
+
           <p>
-            Eduport education theme, built specifically for the education
+            TestCracker education theme, built specifically for the education
             centers which is dedicated to teaching and involve learners.
           </p>
           <div className="footer-social">

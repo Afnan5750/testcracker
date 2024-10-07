@@ -1,4 +1,5 @@
-/* Navbar styling */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Poppins:wght@400&display=swap");
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -23,10 +24,25 @@
 
 /* Logo styling */
 .logo {
-  font-size: 28px;
-  font-weight: 700;
-  color: inherit; /* Inherit the text color */
-  text-decoration: none;
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center the text vertically */
+  font-size: 32px; /* Adjusted font size for prominence */
+  text-decoration: none; /* Remove underline */
+  letter-spacing: 1px; /* Added letter spacing for a cleaner look */
+}
+
+.test {
+  font-weight: 700; /* Bold for "Test" */
+  color: #1d3b53; /* Professional blue color for "Test" */
+  font-family: "Roboto", sans-serif; /* Professional font for "Test" */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.cracker {
+  font-weight: 400; /* Normal weight for "Cracker" */
+  color: #ff6f61; /* Warm coral color for "Cracker" */
+  font-family: "Poppins", sans-serif; /* Modern font for "Cracker" */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 /* Navigation links styling */
@@ -277,7 +293,7 @@
 }
 
 /* Logo dark mode */
-.dark-mode .logo {
+.dark-mode .logo .test {
   color: #f0f0f0; /* White color for the logo */
 }
 

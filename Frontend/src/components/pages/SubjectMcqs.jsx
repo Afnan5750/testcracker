@@ -127,7 +127,11 @@ const SubjectMcqs = () => {
                   <li
                     key={i}
                     className={`option ${optionClass}`}
-                    onClick={() => handleOptionClick(option)}
+                    onClick={() => {
+                      if (!selectedOption) {
+                        handleOptionClick(option); // Only allow the first option click
+                      }
+                    }}
                     style={{
                       cursor: selectedOption ? "not-allowed" : "pointer",
                     }}

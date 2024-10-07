@@ -19,9 +19,29 @@
 }
 
 .logo-text {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #333;
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center the text vertically */
+  font-size: 36px; /* Adjusted font size for prominence */
+  text-decoration: none; /* Remove underline */
+  letter-spacing: 1px; /* Added letter spacing for a cleaner look */
+  margin: 0; /* Remove default margin */
+  padding: 10px 0; /* Optional: padding for vertical spacing */
+}
+
+/* Styling for "Test" */
+.test {
+  font-weight: 700; /* Bold for "Test" */
+  color: #1d3b53; /* Professional blue color for "Test" */
+  font-family: "Roboto", sans-serif; /* Professional font for "Test" */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Styling for "Cracker" */
+.cracker {
+  font-weight: 400; /* Normal weight for "Cracker" */
+  color: #ff6f61; /* Warm coral color for "Cracker" */
+  font-family: "Poppins", sans-serif; /* Modern font for "Cracker" */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 .footer-logo p {
@@ -121,9 +141,8 @@
   box-shadow: 0 -4px 12px rgba(255, 255, 255, 0.1);
 }
 
-.dark-mode .footer-logo .logo-text {
-  color: #f0f0f0; /* Light text color for logo */
-  font-size: 3rem;
+.dark-mode .footer-logo .logo-text .test {
+  color: #f0f0f0;
 }
 
 .dark-mode .footer-logo p {

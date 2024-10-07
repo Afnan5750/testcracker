@@ -36,11 +36,19 @@ router.post('/forgot-password', async (req, res) => {
 
         const mailOptions = {
             to: user.email,
-            from: process.env.EMAIL_USER,
-            subject: 'Password Reset Code',
-            text: `Your password reset code is: ${code}\n\n
-            The code will expire in 1 hour. If you did not request this, please ignore this email.\n`,
+            from: `"TestCracker" <${process.env.EMAIL_USER}>`,  // Display name and email address
+            subject: 'Password Reset Request',
+            html: `
+                <p>Dear ${user.username},</p>
+                <p>We have received a request to reset the password associated with your account.</p>
+                <p style="font-size: 18px; font-weight: bold;">Your password reset code is: <span style="color: #007bff;">${code}</span></p>
+                <p>Please use this code within the next 1 hour. After that, it will expire for security reasons.</p>
+                <p>If you did not request this, please ignore this email.</p>
+                <p>Best regards,<br>The TestCracker Team</p>
+            `,
         };
+
+
 
         transporter.sendMail(mailOptions, (error) => {
             if (error) return res.status(500).json({ msg: 'Error sending email' });

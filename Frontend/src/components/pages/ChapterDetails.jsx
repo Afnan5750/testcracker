@@ -50,8 +50,7 @@ const ChapterDetails = () => {
 
   return (
     <section className="chapter-detail">
-      <h1>{normalizedCategory} Job Chapters</h1>{" "}
-      {/* Changed heading for clarity */}
+      <h1>{normalizedCategory} Chapters</h1> {/* Changed heading for clarity */}
       <ul>
         {chapters.length > 0 ? (
           chapters.map((chapter) => (
