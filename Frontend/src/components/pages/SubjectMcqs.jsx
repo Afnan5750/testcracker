@@ -13,7 +13,11 @@ const SubjectMcqs = () => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const { isAuthenticated } = useAuth();
   const [unauthorizedAttempts, setUnauthorizedAttempts] = useState(0);
-  const [mcqs, setMcqs] = useState([]); // State to hold MCQs
+  const [mcqs, setMcqs] = useState([]);
+  const [showResult, setShowResult] = useState(false);
+  const [isResultVisible, setIsResultVisible] = useState(false);
+  const [score, setScore] = useState(0);
+
   const navigate = useNavigate();
 
   // Normalize category to match API keys
@@ -81,6 +85,19 @@ const SubjectMcqs = () => {
       ...prevOptions,
       [currentIndex]: option,
     }));
+
+    if (currentIndex === mcqs.length - 1 && option) {
+      setShowResult(true);
+    }
+  };
+
+  const handleShowResult = () => {
+    const score = Object.values(selectedOptions).filter(
+      (selectedOption, index) => selectedOption.isCorrect
+    ).length;
+
+    setScore(score); // Set the score
+    setIsResultVisible(true); // Show the result modal
   };
 
   const handleSignInClick = () => {
@@ -129,7 +146,7 @@ const SubjectMcqs = () => {
                     className={`option ${optionClass}`}
                     onClick={() => {
                       if (!selectedOption) {
-                        handleOptionClick(option); // Only allow the first option click
+                        handleOptionClick(option);
                       }
                     }}
                     style={{
@@ -160,14 +177,25 @@ const SubjectMcqs = () => {
                 {revealedAnswer ? "Hide Answer" : "Show Answer"}
               </button>
 
-              <button
-                className="next-question-btn"
-                onClick={handleNextQuestion}
-                disabled={currentIndex >= mcqs.length - 1}
-                aria-label="Next question"
-              >
-                Next
-              </button>
+              {currentIndex === mcqs.length - 1 ? (
+                <button
+                  className="result-btn"
+                  onClick={handleShowResult}
+                  disabled={!selectedOptions[currentIndex]}
+                  aria-label="Show result"
+                >
+                  Result
+                </button>
+              ) : (
+                <button
+                  className="next-question-btn"
+                  onClick={handleNextQuestion}
+                  disabled={currentIndex >= mcqs.length - 1}
+                  aria-label="Next question"
+                >
+                  Next
+                </button>
+              )}
             </div>
 
             {revealedAnswer && (
@@ -198,6 +226,25 @@ const SubjectMcqs = () => {
                 </button>
               </div>
             )}
+          {isResultVisible && (
+            <div className="result-modal">
+              <div className="modal-content">
+                <button
+                  className="close-btn"
+                  onClick={() => setIsResultVisible(false)}
+                  aria-label="Close modal"
+                >
+                  <span className="close-icon">&times;</span>
+                </button>
+                <h2 className="score-heading">
+                  Your Score: {score} / {mcqs.length}
+                </h2>
+                <p className="score-message">
+                  Well done! You've completed the quiz.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
