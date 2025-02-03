@@ -26,6 +26,8 @@ import AddSubjectChapterForm from "./components/pages/AddSubjectChapterForm";
 import AddJobChapterForm from "./components/pages/AddJobChapterForm";
 import AddSubjectMcqsForm from "./components/pages/AddSubjectMcqsForm";
 import AddJobMcqsForm from "./components/pages/AddJobMcqsForm";
+import AdminLogin from "./components/pages/AdminLogin";
+import ProtectedRoute from "./context/ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -36,7 +38,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <ToastContainer // Add ToastContainer here
+          <ToastContainer
             position="top-right"
             autoClose={5000}
             hideProgressBar={false}
@@ -57,7 +59,15 @@ function App() {
                 </>
               }
             />
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/admin" element={<AdminLogin />} />
+            <Route
+              path="/admin-dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminPage />
+                </ProtectedRoute>
+              }
+            />
             <Route
               path="/chapter-detail/:category"
               element={<ChapterDetail />}
@@ -70,7 +80,6 @@ function App() {
               path="/job-subject-mcqs/:category/:chapterNumber"
               element={<Mcqs />}
             />
-
             <Route
               path="/subject-mcqs/:category/:chapterNumber"
               element={<SubjectMcqs />}

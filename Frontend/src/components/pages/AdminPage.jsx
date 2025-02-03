@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify"; // Import toast function
 import "react-toastify/dist/ReactToastify.css"; // Import toast styles
 import "../styles/AdminPage.css"; // Import custom CSS
 
-const AdminPanel = () => {
+const AdminPage = () => {
   const [activeForm, setActiveForm] = useState(null); // Manage active form
   const navigate = useNavigate();
 
@@ -29,9 +29,20 @@ const AdminPanel = () => {
           ? "Job Subject"
           : form === "jobChapter"
           ? "Job Chapter"
-          : "Job MCQs" // New case for Job MCQs
+          : "Job MCQs"
       } form!`
     );
+  };
+
+  const handleLogout = () => {
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    if (confirmLogout) {
+      localStorage.removeItem("token");
+      toast.success("Successfully logged out!");
+      setTimeout(() => {
+        navigate("/admin");
+      }, 500);
+    }
   };
 
   return (
@@ -70,12 +81,15 @@ const AdminPanel = () => {
           Add MCQs
         </button>
         <button
-          className="admin-sidebar-button" // New button for Add Job MCQs
+          className="admin-sidebar-button"
           onClick={() => handleButtonClick("jobMcqs")}
         >
           Add Job MCQs
         </button>
         <hr />
+        <button className="admin-sidebar-button" onClick={() => handleLogout()}>
+          Logout
+        </button>
       </div>
       <div className="admin-content">
         {/* Conditionally render the form based on activeForm state */}
@@ -93,4 +107,4 @@ const AdminPanel = () => {
   );
 };
 
-export default AdminPanel;
+export default AdminPage;

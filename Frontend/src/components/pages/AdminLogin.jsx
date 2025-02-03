@@ -1,35 +1,43 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/LoginForm.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useAuth } from "../../context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const LoginForm = () => {
+const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5001/api/login", {
-        email,
-        password,
+      const response = await fetch("http://localhost:5001/api/Adminlogin", {
+        // Replace with your API endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
       });
-      localStorage.setItem("token", response.data.token); // Store token in localStorage
-      login(); // Update auth context
-      toast.success("Successfully logged in!"); // Show success message
+
+      if (!response.ok) {
+        const errorData = await response.json(); // Get error message from server
+        throw new Error(errorData.msg || "Login failed"); // Display server error or generic message
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      toast.success("Successfully logged in as admin!");
       setTimeout(() => {
-        navigate("/");
+        navigate("/admin-dashboard");
       }, 500);
     } catch (error) {
-      toast.error("Error logging in"); // Show error message
+      console.error("Login error:", error);
+      toast.error(error.message); // Display error message to the user
     }
   };
 
@@ -41,11 +49,11 @@ const LoginForm = () => {
     <div className="signin-container">
       <div className="signin-box">
         <h2 className="welcome-text">
-          Welcome to <span className="test">Test</span>
+          Welcome Admin to <span className="test">Test</span>
           <span className="cracker">Cracker</span>! 👋
         </h2>
 
-        <p>Please sign in to your account and start the adventure</p>
+        <p>Please sign in to your admin account</p>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label htmlFor="email">Email</label>
@@ -78,23 +86,16 @@ const LoginForm = () => {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
             </div>
-            {/* Link to Forgot Password page */}
-            <Link to="/forgot-password" className="forgot-password">
-              Forgot Password?
-            </Link>
           </div>
 
           <button className="signin-button" type="submit">
             Sign in
           </button>
         </form>
-        <p className="create-account">
-          New on our platform? <Link to="/signup">Create an account</Link>
-        </p>
       </div>
       <ToastContainer />
     </div>
   );
 };
 
-export default LoginForm;
+export default AdminLogin;

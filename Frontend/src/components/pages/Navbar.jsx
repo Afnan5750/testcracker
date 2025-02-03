@@ -102,7 +102,10 @@ const Navbar = () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
     if (confirmLogout) {
       logout();
-      navigate("/"); // Redirect to home page after logout
+      toast.success("Successfully logged out!");
+      setTimeout(() => {
+        navigate("/");
+      }, 500);
     }
   };
 
