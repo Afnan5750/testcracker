@@ -7,14 +7,38 @@ const FilterSectionSubject = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [quizzes, setQuizzes] = useState([]);
+  const [mcqCounts, setMcqCounts] = useState({});
   const navigate = useNavigate();
 
-  // Fetch quizzes from the API
+  // Fetch the total MCQs for each subject
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
         const response = await axios.get("http://localhost:5001/api/subjects");
         setQuizzes(response.data);
+
+        // Fetch the total MCQs for each subject
+        const mcqPromises = response.data.map(async (quiz) => {
+          try {
+            const response = await axios.get(
+              `http://localhost:5001/api/mcqs/${quiz.title}/total-mcqs`
+            );
+            return { title: quiz.title, totalMCQs: response.data.totalMCQs };
+          } catch (error) {
+            console.error(`Error fetching MCQs for ${quiz.title}:`, error);
+            return { title: quiz.title, totalMCQs: "N/A" }; // Fallback in case of error
+          }
+        });
+
+        const mcqData = await Promise.all(mcqPromises);
+
+        // Store the total MCQs data
+        const mcqCountMap = mcqData.reduce((acc, { title, totalMCQs }) => {
+          acc[title] = totalMCQs;
+          return acc;
+        }, {});
+
+        setMcqCounts(mcqCountMap); // Update state with the MCQ counts
       } catch (error) {
         console.error("Error fetching quizzes:", error);
       }
@@ -77,7 +101,7 @@ const FilterSectionSubject = () => {
             <div className="details">
               <span>
                 <i className="fas fa-list-ul totalMCQs"></i> Total MCQs:{" "}
-                {quiz.totalMCQs || "N/A"}
+                {mcqCounts[quiz.title] || "N/A"}
               </span>
               <span>
                 <button
